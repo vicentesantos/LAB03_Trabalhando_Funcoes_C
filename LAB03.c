@@ -8,8 +8,10 @@ Aluno5 Vicente Santos Gonçalves..........RA 1111392111035
 */
 #include <stdio.h>
 #include <stdbool.h>
+#include <stdlib.h>
 #include <locale.h>
 #include <conio.h>
+#include <math.h>
 
 void imprimirObjetivoLab();
 bool testarDivisibilidade(int dividendo, int divisor);
@@ -41,17 +43,17 @@ int main(void){
 		if(y!=2 && y!=3 && y!=4 && y!=5 && y!=6 && y!=7 && y!=8 && y!=9 && y!=10 && y!=11 && y!=12 && y!=15 && y!=25){
 			system("clear||cls");
 			imprimirObjetivoLab();
-			puts("\nDivisor invalido! Favor informar novos valores.");
+			puts("\nDivisor inválido! Favor informar novos valores.");
 		}		
 	}while(y!=2 && y!=3 && y!=4 && y!=5 && y!=6 && y!=7 && y!=8 && y!=9 && y!=10 && y!=11 && y!=12 && y!=15 && y!=25);
-	printf(testarDivisibilidade(x,y) ? "\n%d eh divisivel por %d\n" : "\n%d NAO eh divisivel por %d\n",x,y);
+	printf(testarDivisibilidade(x,y) ? "\n%d É divisivel por %d\n" : "\n%d Não é divisivel por %d\n",x,y);
 	puts("\nDeseja realizar novo teste (s/n)?");
 	opcao = getche();
 	if(opcao == 's'||opcao == 'S')
 		system("clear||cls");
 	do{
 		if(opcao!='s' && opcao!='n' && opcao!='S' && opcao!='N'){
-			puts("\nOpcao invalida! Deseja realizar novo teste (s/n)?");
+			puts("\nOpcão inválida! Deseja realizar novo teste (s/n)?");
 			opcao = getche();
 			if(opcao == 's'||opcao == 'S')
 				system("clear||cls");
@@ -63,9 +65,9 @@ int main(void){
 	return 0;  
 }
 void imprimirObjetivoLab(){
-	puts("Programa TESTE DE DIVISIBILIDADE");
-	puts("\nprograma tem por objetivo informar se um determinado numero eh ou nao divisivel por outro.\n");
-	puts("Os testes de divisibilidade sao validos para os seguintes divisores: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 15 e 25.");
+	puts("PROGRAMA TESTE DE DIVISIBILIDADE");
+	puts("\nPrograma tem por objetivo informar se um determinado número é ou não divisivel por outro.\n");
+	puts("Os testes de divisibilidade são válidos para os seguintes divisores: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 15 e 25.");
 }
 bool testarDivisibilidade(int dividendo, int divisor){
 	bool resp;
@@ -124,8 +126,25 @@ bool divisibilidade2(int num){
 	return resp;
 }
 bool divisibilidade3(int num){
-	bool resp;
-	
+	bool resp, z = true;
+	int x = num;
+	int soma;
+	while(z){
+		while(x!=0){
+			soma += x%10; 
+			x = x/10;
+		}
+		if((soma/10)<1){
+			z = false;
+			if(soma == 3 || soma ==6 || soma==9)
+				resp = true;
+			else
+				resp = false;	
+		}
+		else if((soma/10)>=1)
+			x=soma;
+			soma=0;
+	}
 	return resp;
 }
 bool divisibilidade4(int num){
@@ -162,7 +181,16 @@ bool divisibilidade6(int num){
 }
 bool divisibilidade7(int num){
 	bool resp;
-	
+	int u, x = num;
+	while(x>70){
+		u = (x%10)*2;
+		x = x/10;
+		x = fabs(x-u);
+	}
+	if(x==0 || x==7 || x==14 || x==21 || x==28 || x==35 || x==42 || x==49 || x==54 || x==63 || x==70)
+		resp = true;	
+	else
+		resp = false;
 	return resp;
 }
 bool divisibilidade8(int num){
@@ -201,7 +229,20 @@ bool divisibilidade10(int num){
 }
 bool divisibilidade11(int num){
 	bool resp;
-	
+	int x;
+	int par=0;
+	int impar=0;
+	while(num!=0){
+		impar = impar + num%10; 
+		num = num/10;
+		par = par + num%10; 
+		num = num/10; 			
+	}
+	x = fabs(impar-par);
+	if(x==0)
+		resp = true;
+	else
+		resp = false;
 	return resp;
 }
 bool divisibilidade12(int num){
