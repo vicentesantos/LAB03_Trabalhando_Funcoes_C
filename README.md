@@ -1,4 +1,4 @@
-# LABORATÓRIO DE ALGORITMOS E LOGICA DE PROGRAMAÇÃO
+# LABORATÓRIO DE ALGORITMOS E LÓGICA DE PROGRAMAÇÃO
 
 - Objetivo: Entender a estrutura de um programa, trabalhando com organização do código em funções.
 
